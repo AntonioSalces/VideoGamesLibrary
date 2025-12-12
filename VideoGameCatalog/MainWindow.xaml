@@ -1,0 +1,91 @@
+﻿<Window x:Class="VideoGameCatalog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Catálogo de Videojuegos" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Catálogo de Videojuegos" 
+                   FontSize="18" FontWeight="Bold" 
+                   Foreground="White" Background="#003366"
+                   Padding="10"/>
+
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="280"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="5">
+                <TextBlock Text="Plataformas" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <ListBox Name="lbPlataformas" Height="200" Margin="0,0,0,10"
+                         SelectionChanged="LbPlataformas_SelectionChanged"/>
+
+                <Label Content="Nombre" FontWeight="Bold"/>
+                <TextBox Name="txtNombrePlataforma" Height="30" Padding="5" Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="btnGuardarPlataforma" Content="Guardar" Width="70" Height="30" 
+                            Background="Green" Foreground="White" Margin="0,0,5,0"
+                            Click="BtnGuardarPlataforma_Click"/>
+                    <Button Name="btnLimpiarPlataforma" Content="Limpiar" Width="70" Height="30" 
+                            Background="Blue" Foreground="White" Margin="0,0,5,0"
+                            Click="BtnLimpiarPlataforma_Click"/>
+                    <Button Name="btnEliminarPlataforma" Content="Eliminar" Width="70" Height="30" 
+                            Background="Red" Foreground="White"
+                            Click="BtnEliminarPlataforma_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="5">
+                <TextBlock Text="Juegos" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <ListBox Name="lbJuegos" Height="350" Margin="0,0,0,10"
+                         SelectionChanged="LbJuegos_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Titulo}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Genero}" FontSize="11" Foreground="Gray"/>
+                                <TextBlock Text="{Binding Nota, StringFormat='Nota: {0}/10'}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="5" Background="White">
+                <TextBlock Text="Editar Juego" FontSize="12" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <Label Content="Título" FontWeight="Bold" FontSize="11"/>
+                <TextBox Name="txtTituloJuego" Height="30" Padding="5" Margin="0,0,0,5"/>
+
+                <Label Content="Género" FontWeight="Bold" FontSize="11"/>
+                <TextBox Name="txtGeneroJuego" Height="30" Padding="5" Margin="0,0,0,5"/>
+
+                <Label Content="Nota" FontWeight="Bold" FontSize="11"/>
+                <TextBox Name="txtNotaJuego" Height="30" Padding="5" Margin="0,0,0,5"/>
+
+                <Label Content="Plataforma" FontWeight="Bold" FontSize="11"/>
+                <ComboBox Name="cbPlataformasJuego" Height="30" Margin="0,0,0,15"/>
+
+                <Button Name="btnGuardarJuego" Content="Guardar" Height="30" 
+                        Background="Green" Foreground="White" Margin="0,0,0,5"
+                        Click="BtnGuardarJuego_Click"/>
+                <Button Name="btnLimpiarJuego" Content="Limpiar" Height="30" 
+                        Background="Blue" Foreground="White" Margin="0,0,0,5"
+                        Click="BtnLimpiarJuego_Click"/>
+                <Button Name="btnEliminarJuego" Content="Eliminar" Height="30" 
+                        Background="Red" Foreground="White"
+                        Click="BtnEliminarJuego_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
